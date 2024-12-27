@@ -5,13 +5,22 @@ from kivy.app import App
 from kivy.lang import Builder
 from telas import *
 from botoes import *
-import requests
 from bannervenda import BannerVenda
-import os
 from functools import partial
 from myfirebase import MyFirebase
 from bannervendedor import BannerVendedor
 from datetime import date
+# ================================================================================
+# Qualquer projeto usando Kivy em que voce vai fazer requisição (requests) "https"
+# preciso fazer o import do "certifi". Isso impacta diretamente o uso do App pelo
+# celular.
+# ================================================================================
+import requests
+import os
+import certifi
+
+os.environ["SSL_CERT_FILE"] = certifi.where()
+# ================================================================================
 
 GUI = Builder.load_file("main.kv")
 
